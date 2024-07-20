@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Data</title>
+</head>
+<body>
+    <h2>Data from Excel File</h2>
+    <table border="1">
+        <tr>
+            {% for key in data.0.keys %}
+                <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+            <tr>
+                {% for value in row.values %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <form method="post" action="{% url 'send_messages' %}">
+        {% csrf_token %}
+        <button type="submit">Send Messages</button>
+    </form>
+</body>
+</html>
